@@ -48,6 +48,7 @@ commands=(
     "iostat $execution_time 1 -t -k -x -N"
     "top -c -b -d $execution_time -n 1"
     "mpstat $execution_time 1 -P ALL"
+	"pidstat"
 )
 
 # Define output filenames
@@ -62,6 +63,7 @@ output_filenames=(
     "iostat.log"
     "top.log"
     "mpstat.log"
+	"pidstat.log"
 )
 
 # Create an output files with date and time

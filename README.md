@@ -44,6 +44,52 @@ The script executes various commands to collect system performance data, includi
 
 The output of each command is saved to a corresponding log file in the specified log directory.
 
+## Command Descriptions:
+
+**vmstat**:
+Displays system information related to processes, memory, paging, block IO, traps, and CPU activity.
+Useful for getting an overall snapshot of the system's performance.
+
+**vmstat -d**:
+Provides statistics about disk I/O activities, such as reads and writes on block devices.
+Useful for monitoring disk performance.
+
+**ss -s:**
+Summarizes socket statistics, showing information about TCP, UDP, and other protocol connections.
+Helps in understanding the state of network connections.
+
+**cat /proc/meminfo**:
+Displays detailed information about the system's memory usage, including total, free, and cached memory.
+Helpful for diagnosing memory issues and monitoring resource consumption.
+
+**cat /proc/slabinfo**:
+Shows kernel slab cache information, which is used to monitor the internal memory management of the kernel.
+Useful for understanding kernel memory allocations and troubleshooting memory leaks.
+
+**ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,wchan:32,args**:
+Lists processes with specific information such as CPU and memory usage, process state, start time, etc.
+Useful for identifying resource-hungry processes.
+
+**ss -neopa**:
+Displays detailed socket information, including established connections, along with their process IDs (PIDs) and network states.
+Helpful for in-depth network analysis and troubleshooting.
+
+**iostat $execution_time 1 -t -k -x -N**:
+Monitors disk I/O performance with extended statistics such as read/write rates, device utilization, and more, at intervals of $execution_time seconds.
+Valuable for identifying I/O bottlenecks.
+
+**top -c -b -d $execution_time -n 1**:
+Shows real-time process monitoring in batch mode (-b), with details about CPU and memory usage of each process.
+This is useful for capturing system performance snapshots at intervals.
+
+**mpstat $execution_time 1 -P ALL**:
+Reports CPU usage per processor at intervals of $execution_time seconds, showing system and user CPU time for all cores.
+Useful for identifying uneven load distribution across CPU cores.
+
+**pidstat**:
+Monitors the resource usage of individual processes (e.g., CPU, memory, I/O usage).
+Provides detailed insights into process-level performance, which helps in identifying problematic processes.
+
 ## Interfaces
 The script also executes the "ethtool -S" command for each interface defined in the script. The output for each interface is saved to a separate log file.
 You need to provide the interfaces list manually. If there is only one interface, mention only one; if there are more than two interfaces, update accordingly.
